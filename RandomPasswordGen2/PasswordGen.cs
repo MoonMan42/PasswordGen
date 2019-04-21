@@ -13,7 +13,10 @@ namespace RandomPasswordGen2
 {
     public partial class PasswordGen : Form
     {
-        List<PasswordModel> passwordList = new List<PasswordModel>();
+        private List<PasswordModel> passwordList = new List<PasswordModel>();
+        private List<PasswordModel> displayList; // resizable list for the user to choose how many to display at a time
+
+        Random rand = new Random();
 
         public PasswordGen()
         {
@@ -23,14 +26,20 @@ namespace RandomPasswordGen2
 
         private void LoadPasswordList()
         {
+            displayList = new List<PasswordModel>(); // reset list every time refreshed
             passwordList = SQLiteDataAccess.LoadPasswords();
+
+            for (int i = 0; i < 3; i++)
+            {
+                displayList.Add(passwordList[rand.Next(passwordList.Count)]);
+            }
             WireUpPasswordList();
         }
 
         private void WireUpPasswordList()
         {
             passwordGenListBox.DataSource = null;
-            passwordGenListBox.DataSource = passwordList;
+            passwordGenListBox.DataSource = displayList;
             passwordGenListBox.DisplayMember = "DisplayPassword";
         }
 

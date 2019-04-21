@@ -38,7 +38,7 @@
             // 
             this.passwordGenListBox.FormattingEnabled = true;
             this.passwordGenListBox.Location = new System.Drawing.Point(9, 10);
-            this.passwordGenListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.passwordGenListBox.Margin = new System.Windows.Forms.Padding(2);
             this.passwordGenListBox.Name = "passwordGenListBox";
             this.passwordGenListBox.Size = new System.Drawing.Size(292, 121);
             this.passwordGenListBox.TabIndex = 0;
@@ -75,14 +75,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(308, 166);
             this.Controls.Add(this.addTextBox);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.passwordGenListBox);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PasswordGen";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Password Gen";
             this.ResumeLayout(false);
             this.PerformLayout();
