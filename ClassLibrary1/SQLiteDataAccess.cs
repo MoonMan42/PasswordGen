@@ -32,5 +32,17 @@ namespace PasswordLibrary2
                 cnn.Execute("INSERT INTO Password (Password) VALUES (@Password)", password);
             }
         }
+
+        /// <summary>
+        /// delete password. 
+        /// </summary>
+        /// <param name="password"></param>
+        public static void RemovePassword(PasswordModel password)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("DELETE FROM Password WHERE Password = (@Password)", password);
+            }
+        }
     }
 }

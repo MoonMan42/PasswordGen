@@ -9,12 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace RandomPasswordGen2
 {
     public partial class PasswordGen : Form
     {
         private List<PasswordModel> passwordList = new List<PasswordModel>();
-        private List<PasswordModel> displayList; // resizable list for the user to choose how many to display at a time
+
 
         Random rand = new Random();
 
@@ -26,20 +27,14 @@ namespace RandomPasswordGen2
 
         private void LoadPasswordList()
         {
-            displayList = new List<PasswordModel>(); // reset list every time refreshed
             passwordList = SQLiteDataAccess.LoadPasswords();
-
-            for (int i = 0; i < 3; i++)
-            {
-                displayList.Add(passwordList[rand.Next(passwordList.Count)]);
-            }
             WireUpPasswordList();
         }
 
         private void WireUpPasswordList()
         {
             passwordGenListBox.DataSource = null;
-            passwordGenListBox.DataSource = displayList;
+            passwordGenListBox.DataSource = passwordList;
             passwordGenListBox.DisplayMember = "DisplayPassword";
         }
 
@@ -65,5 +60,34 @@ namespace RandomPasswordGen2
 
             LoadPasswordList(); 
         }
+
+        // delete button
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            // find the password in the passwordlist
+            string temp = passwordGenListBox.GetItemText(passwordGenListBox.SelectedItem);
+            PasswordModel p = passwordList.Find(x => x.Password == temp); 
+
+            SQLiteDataAccess.RemovePassword(p);
+
+            // reload the list
+            LoadPasswordList();
+        }
+
+
+        /// <summary>
+        /// Get the selected field. (Testing)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void passwordGenListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // get currently selected item in the list box
+            string curItem = passwordGenListBox.GetItemText(passwordGenListBox.SelectedItem);
+
+        }
+
+
+        
     }
 }
