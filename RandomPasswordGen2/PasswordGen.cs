@@ -102,19 +102,19 @@ namespace RandomPasswordGen2
         private void deleteAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Are you sure you want to delete the database and start over?",
-                "Are you Sure", MessageBoxButtons.YesNo);
+                "Are you Sure?", MessageBoxButtons.YesNo);
 
             switch (dr)
             {
                 case DialogResult.Yes:
-                    SQLiteDataAccess.DeleteAllPasswords();
+                    SQLiteDataAccess.DeleteAllPasswords();                    
+                    LoadPasswordList();// Refresh list
                     break;
                 case DialogResult.No:
                     break;
             }
 
-            // Refresh list
-            LoadPasswordList();
+            
         }
 
        

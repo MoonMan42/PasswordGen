@@ -34,12 +34,12 @@
             this.addTextBox = new System.Windows.Forms.TextBox();
             this.Management = new System.Windows.Forms.GroupBox();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.copyButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyButton = new System.Windows.Forms.Button();
             this.Management.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -56,9 +56,9 @@
             // 
             // refreshButton
             // 
-            this.refreshButton.Location = new System.Drawing.Point(3, 18);
+            this.refreshButton.Location = new System.Drawing.Point(7, 18);
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(75, 23);
+            this.refreshButton.Size = new System.Drawing.Size(90, 23);
             this.refreshButton.TabIndex = 1;
             this.refreshButton.Text = "Refresh";
             this.refreshButton.UseVisualStyleBackColor = true;
@@ -89,20 +89,30 @@
             this.Management.Controls.Add(this.copyButton);
             this.Management.Location = new System.Drawing.Point(5, 179);
             this.Management.Name = "Management";
-            this.Management.Size = new System.Drawing.Size(287, 47);
+            this.Management.Size = new System.Drawing.Size(292, 47);
             this.Management.TabIndex = 4;
             this.Management.TabStop = false;
             this.Management.Text = "Management";
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(84, 18);
+            this.deleteButton.Location = new System.Drawing.Point(103, 18);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.Size = new System.Drawing.Size(90, 23);
             this.deleteButton.TabIndex = 2;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // copyButton
+            // 
+            this.copyButton.Location = new System.Drawing.Point(199, 18);
+            this.copyButton.Name = "copyButton";
+            this.copyButton.Size = new System.Drawing.Size(90, 23);
+            this.copyButton.TabIndex = 6;
+            this.copyButton.Text = "Copy";
+            this.copyButton.UseVisualStyleBackColor = true;
+            this.copyButton.Click += new System.EventHandler(this.copyButton_Click);
             // 
             // menuStrip1
             // 
@@ -110,9 +120,10 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(308, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(848, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Visible = false;
             // 
             // fileToolStripMenuItem
             // 
@@ -145,21 +156,11 @@
             this.deleteAllToolStripMenuItem.Text = "Delete All";
             this.deleteAllToolStripMenuItem.Click += new System.EventHandler(this.deleteAllToolStripMenuItem_Click);
             // 
-            // copyButton
-            // 
-            this.copyButton.Location = new System.Drawing.Point(165, 18);
-            this.copyButton.Name = "copyButton";
-            this.copyButton.Size = new System.Drawing.Size(75, 23);
-            this.copyButton.TabIndex = 6;
-            this.copyButton.Text = "Copy";
-            this.copyButton.UseVisualStyleBackColor = true;
-            this.copyButton.Click += new System.EventHandler(this.copyButton_Click);
-            // 
             // PasswordGen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(308, 234);
+            this.ClientSize = new System.Drawing.Size(304, 234);
             this.Controls.Add(this.Management);
             this.Controls.Add(this.addTextBox);
             this.Controls.Add(this.addButton);
