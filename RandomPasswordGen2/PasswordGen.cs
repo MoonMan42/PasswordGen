@@ -38,27 +38,25 @@ namespace RandomPasswordGen2
             passwordGenListBox.DisplayMember = "DisplayPassword";
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            // don't add or delete or you'll break it
-        }
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
             LoadPasswordList();
         }
 
+        // add password action
+        private void addTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                AddPassword();
+            }
+        }
+
+        
         private void addButton_Click(object sender, EventArgs e)
         {
-            PasswordModel p = new PasswordModel();
-
-            p.Password = addTextBox.Text;
-
-            SQLiteDataAccess.SavePassword(p);
-
-            addTextBox.Text = ""; // clear text field
-
-            LoadPasswordList(); 
+            AddPassword();
         }
 
         // delete button
@@ -112,11 +110,24 @@ namespace RandomPasswordGen2
                     break;
                 case DialogResult.No:
                     break;
-            }
-
-            
+            }            
         }
 
-       
+
+
+        // add new field
+        private void AddPassword()
+        {
+            PasswordModel p = new PasswordModel();
+
+            p.Password = addTextBox.Text;
+
+            SQLiteDataAccess.SavePassword(p);
+
+            addTextBox.Text = ""; // clear text field
+
+            LoadPasswordList();
+        }
+        
     }
 }
