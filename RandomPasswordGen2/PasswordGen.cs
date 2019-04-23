@@ -74,12 +74,14 @@ namespace RandomPasswordGen2
             LoadPasswordList();
         }
 
+        // copy button 
+        private void copyButton_Click(object sender, EventArgs e)
+        {
+            string temp = passwordGenListBox.GetItemText(passwordGenListBox.SelectedItem);
+            Clipboard.SetText($"{temp}");
+        }
 
-        /// <summary>
-        /// Get the selected field. (Testing)
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void passwordGenListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             // get currently selected item in the list box
@@ -87,7 +89,34 @@ namespace RandomPasswordGen2
 
         }
 
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
 
-        
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadPasswordList();
+        }
+
+        private void deleteAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete the database and start over?",
+                "Are you Sure", MessageBoxButtons.YesNo);
+
+            switch (dr)
+            {
+                case DialogResult.Yes:
+                    SQLiteDataAccess.DeleteAllPasswords();
+                    break;
+                case DialogResult.No:
+                    break;
+            }
+
+            // Refresh list
+            LoadPasswordList();
+        }
+
+       
     }
 }

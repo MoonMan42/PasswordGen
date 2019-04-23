@@ -44,5 +44,16 @@ namespace PasswordLibrary2
                 cnn.Execute("DELETE FROM Password WHERE Password = (@Password)", password);
             }
         }
+
+        /// <summary>
+        /// Deletes entire database and lets you start over. (Careful)
+        /// </summary>
+        public static void DeleteAllPasswords()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("DELETE FROM Password");
+            }
+        }
     }
 }
