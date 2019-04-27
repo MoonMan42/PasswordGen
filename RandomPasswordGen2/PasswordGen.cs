@@ -128,6 +128,29 @@ namespace RandomPasswordGen2
 
             LoadPasswordList();
         }
-        
+
+        private void refreshToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            LoadPasswordList();
+        }
+
+        private void deleteAllToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to delete all entries.", "Are you sure", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                SQLiteDataAccess.DeleteAllPasswords();
+                LoadPasswordList(); // refresh list
+            } else
+            {
+                // do nothing
+            }
+        }
+
+        private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
