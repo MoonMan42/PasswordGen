@@ -16,7 +16,6 @@ namespace RandomPasswordGen2
     {
         private List<PasswordModel> passwordList = new List<PasswordModel>();
 
-
         Random rand = new Random();
 
         public PasswordGen()
@@ -28,6 +27,17 @@ namespace RandomPasswordGen2
         private void LoadPasswordList()
         {
             passwordList = SQLiteDataAccess.LoadPasswords();
+
+
+            // swap out a special character ("*") with a random number
+            foreach (var p in passwordList)
+            {
+                int randNum = rand.Next(10, 100);
+
+
+                p.Password = p.Password.Replace("*", $"{randNum}");
+            }
+
             WireUpPasswordList();
         }
 
