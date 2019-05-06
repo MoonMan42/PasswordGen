@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -52,6 +53,7 @@ namespace RandomPasswordGen2
         private void refreshButton_Click(object sender, EventArgs e)
         {
             LoadPasswordList();
+
         }
 
         // add password action
@@ -74,7 +76,8 @@ namespace RandomPasswordGen2
         {
             // find the password in the passwordlist
             string temp = passwordGenListBox.GetItemText(passwordGenListBox.SelectedItem);
-            PasswordModel p = passwordList.Find(x => x.Password == temp); 
+
+            PasswordModel p = passwordList.Find(x => x.Password == temp);
 
             SQLiteDataAccess.RemovePassword(p);
 
@@ -86,7 +89,13 @@ namespace RandomPasswordGen2
         private void copyButton_Click(object sender, EventArgs e)
         {
             string temp = passwordGenListBox.GetItemText(passwordGenListBox.SelectedItem);
-            Clipboard.SetText($"{temp}");
+            try
+            {
+                Clipboard.SetText($"{temp}");
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
 

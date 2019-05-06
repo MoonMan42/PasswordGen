@@ -34,14 +34,20 @@ namespace PasswordLibrary2
         }
 
         /// <summary>
-        /// delete password. 
+        /// delete password with the ID number. 
         /// </summary>
         /// <param name="password"></param>
-        public static void RemovePassword(PasswordModel password)
+        public static void RemovePassword(PasswordModel person)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("DELETE FROM Password WHERE Password = (@Password)", password);
+                try
+                {
+                    cnn.Execute("DELETE FROM Password WHERE ID = (@ID)", person);
+                } catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
             }
         }
 
